@@ -1,0 +1,32 @@
+﻿@model Product
+
+<div class="row">
+    <a class="col" href="/product">Products</a>
+    <div class="col">|</div>
+    <a class="col" href="/categories">Categories</a>
+</div><br><br><br><br>
+
+<div class="row">
+    <div class="col">
+        <form action="/postProduct" method ="POST">
+            <span asp-validation-for="Name"></span><br>
+            Name : <br>
+            <input asp-for="Name" type="text"><br>
+            <span asp-validation-for="Description"></span><br>
+            Description : <br>
+            <textarea asp-for="Description" rows="5" cols="30"></textarea><br>
+            <span asp-validation-for="Price"></span><br>
+            Price : <br>
+            <input asp-for="Price" type="text"><br>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+    <div class="col"></div>
+    <div class="col">
+        @{
+            foreach(Product p in ViewBag.product){
+                <a href="/products/@p.ProductId">@p.Name @p.ProductId</a><br>
+            }
+        }
+    </div>
+</div>
